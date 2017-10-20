@@ -1,0 +1,49 @@
+{# templates/backEnd/circuitshow.html.twig #}
+{#
+  {{ dump(circuit) }}
+#}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details for circuit {{ id }}</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <h1>{{ circuit.description }}</h1>
+
+	<h2>Détails</h2>
+
+			<p>Description: {{ circuit.description }}</p>
+
+			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
+         de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
+         {{ circuit.villeArrivee }}.</p>
+
+      <i class="material-icons" style="font-size:30px;color:tomato;text-shadow:2px 2px 4px #000000;">info_outline</i>
+      <a href="{{ path('detailEtape', { 'id' : circuit.id }) }}">Détail des étapes</a>
+
+  {% if circuit.programmations is not empty %}
+  <h2>Programmations de ce circuit</h2>
+  {# <pre>{{ dump(circuit) }}</pre> #}
+     	<table>
+     	 		<thead>
+     					<tr>
+     				    	<th>Date de départ</th>
+     						  <th>Nombre de personnes</th>
+     						  <th>Prix</th>
+     					</tr>
+     				</thead>
+     		{%  for programmation in circuit.programmations %}
+     			<tr>
+     			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+     			   <td>{{ programmation.nombrePersonnes }}</td>
+     			   <td>{{ programmation.prix }} euros</td>
+     			</tr>
+     		{% endfor %}
+     		</table>
+    {% else %}
+    <p>Désolé : pas encore de programmations pour ce circuit.</p>
+    {% endif %}
+
+</body>
+</html>

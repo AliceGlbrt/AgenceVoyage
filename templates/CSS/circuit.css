@@ -1,0 +1,25 @@
+body {
+    background-color: hsl(240, 67%, 94%);
+}
+
+p,a {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: circle;
+    list-style-position:inside;
+}
+
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}

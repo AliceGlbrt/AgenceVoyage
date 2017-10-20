@@ -1,0 +1,20 @@
+{# templates/detailEtape.html.twig #}
+{#
+  {{ dump(circuit) }}
+#}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details des étapes {{ id }}</title>
+</head>
+<body>
+  <h1>{{ circuit.description }}</h1>
+    <ol>
+    {%  for etape in circuit.etapes %}
+          
+              <li>Etape à {{ etape.villeEtape }} pendant {{ etape.nombreJours }} jour(s).</li>
+          
+        {% endfor %}
+    </ol>
+</body>
+</html>
