@@ -6,20 +6,31 @@ p,a {
     font-family: Verdana, Geneva, sans-serif;
 }
 
-a:hover {
-    color: hotpink;
-}
-
 a:visited {
     text-decoration: none;
 }
 
-ul {
+a:hover {
+    text-decoration: none;
+}
+
+ul.a {
     list-style-type: circle;
     list-style-position:inside;
 }
 
-img:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+ul.b {
+    float:right; 
+    margin-right:10px;
+
 }
+
+div.carr {
+	padding: 20px 200px;
+}
+
+a.sstitre {
+	color:white;
+}
+
+

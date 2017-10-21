@@ -6,23 +6,29 @@
 <html>
 <head>
   <title>Details for circuit {{ id }}</title>
-  <style>
-#panel, .flip {
-    font-size: 16px;
-    padding: 10px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
-    border: solid 1px #a6d8a8;
-    margin: auto;
-}
-
-#panel {
-    display: none;
-}
-</style>
+  <link rel="stylesheet" href="templates/CSS/circuit.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body>
+
+   <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <p class="navbar-text" style="font-size:30px; margin: 0">A&A Voyages</p>
+        <i class="material-icons navbar-text" style="font-size:30px; margin: 10px">explore</i>
+    </div>
+    <ul class="nav navbar-nav" id="b">
+      <li><a href="{{ path('circuitslistclient.html.css')}}" style="font-size:20px">Menu</a></li>
+      <li><a href="#" style="font-size:20px">Nos Destinations</a></li>
+      <li><a href="#" style="font-size:20px">Nos promotions</a></li>
+      <li><a href="#" style="font-size:20px">Nous contacter</a></li>
+    </ul>
+  </div>
+</nav>
   <h1>{{ circuit.description }}</h1>
 
 	<h2>Détails</h2>
