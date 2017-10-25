@@ -4,7 +4,26 @@
 
 {% block title %}{{ parent() }} - Circuits list{% endblock %}
 
+{% block head %}<link rel="stylesheet" href="../templates/CSS/circuit.css">{% endblock %}
+
 {% block body %}
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <p class="navbar-text" style="font-size:30px; margin: 0">A&A Voyages</p>
+        <i class="material-icons navbar-text" style="font-size:30px; margin: 10px">explore</i>
+    </div>
+    <ul class="nav navbar-nav menu">
+      <li class="active"><a href="{{ path('circuitslist') }}" style="font-size:20px">Menu</a></li>
+      <li><a href="#" style="font-size:20px">Nos Destinations</a></li>
+      <li><a href="#" style="font-size:20px">Nos promotions</a></li>
+      <li><a href="#" style="font-size:20px">Nous contacter</a></li>
+    </ul>
+  </div>
+</nav>
+     
+  <div style="margin-top:50px">
     <h1>List of circuits</h1>
     {% if circuitslist is not empty %}
         <p>Here are all your circuits:</p>
@@ -19,5 +38,6 @@
     {% else %}
         <p>Sorry, you don't have any circuits yet!</p>
     {% endif %}
+  </div>
 
 {% endblock %} {# body #}

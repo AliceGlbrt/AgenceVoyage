@@ -1,0 +1,66 @@
+body {
+    background-color: hsl(240, 67%, 94%);
+}
+
+p,a,li,h1,h2 {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul.liste {
+    list-style-type: circle;
+    list-style-position:inside;
+}
+
+ul.menu {
+    float:right; 
+    margin-right:10px;
+
+}
+
+div.container {
+    position: relative;
+    left: 0;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 13px;
+    padding-right: 0px;
+}
+div.center {
+    position: absolute;
+    top: 30%;
+    width: 127%;
+    text-align: center;
+    font-size: 150px;
+    color: white;
+}
+img.bandeau { 
+    width: 129%;
+    left:0;
+    opacity: 1;
+}
+
+div.panneau {
+	width: 700px;
+	height: 300px;
+	position: relative;
+	margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2.titre {
+    text-align: center;
+    font-size: 50px;
+}
+
+p, li {
+    font-size: 20px;
+}

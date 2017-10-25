@@ -14,23 +14,20 @@ a:hover {
     text-decoration: none;
 }
 
-ul.a {
+ul.liste {
     list-style-type: circle;
     list-style-position:inside;
 }
 
-ul.b {
+ul.menu {
     float:right; 
     margin-right:10px;
 
 }
 
-div.carr {
-	padding: 20px 200px;
-}
-
 a.sstitre {
 	color:white;
 }
+
 
 
