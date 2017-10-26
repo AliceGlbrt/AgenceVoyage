@@ -6,18 +6,31 @@ p,a {
     font-family: Verdana, Geneva, sans-serif;
 }
 
-a:hover {
-    color: hotpink;
-}
-
 a:visited {
     text-decoration: none;
 }
 
-ul {
+a:hover {
+    text-decoration: none;
+}
+
+ul.liste {
     list-style-type: circle;
     list-style-position:inside;
 }
+
+ul.menu {
+    float:right; 
+    margin-right:10px;
+
+}
+
+a.sstitre {
+	color:white;
+}
+
+
+
 
 img.circuit:hover {
     opacity: 0.5;

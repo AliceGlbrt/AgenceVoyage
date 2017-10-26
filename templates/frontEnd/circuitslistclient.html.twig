@@ -1,15 +1,93 @@
 {# templates/frontEnd/circuitslistclient.html.twig #}
 
-{# A COMPLETER #}
-
 {% extends "baselayout.html.twig" %}
 
 {% block title %}{{ parent() }} - Nos destinations {% endblock %}
 
+{% block head %}<link rel="stylesheet" href="../templates/CSS/circuit.css">{% endblock %}
+
 {% block body %}
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <p class="navbar-text" style="font-size:30px; margin: 0">A&A Voyages</p>
+        <i class="material-icons navbar-text" style="font-size:30px; margin: 10px">explore</i>
+    </div>
+    <ul class="nav navbar-nav menu">
+      <li class="active"><a href="{{ path('circuitslistclient') }}" style="font-size:20px">Menu</a></li>
+      <li><a href="#" style="font-size:20px">Nos Destinations</a></li>
+      <li><a href="#" style="font-size:20px">Nos promotions</a></li>
+      <li><a href="#" style="font-size:20px">Nous contacter</a></li>
+    </ul>
+  </div>
+</nav>
+    
+
+
+<div id="myCarousel" class="carousel slide" style="margin-top:50px">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../../images/accueil.jpg" alt="accueil">
+      <div class="carousel-caption">
+        <h1>A&A Voyages</h1>
+        <h2>Découvrer nos offres exceptionnelles</h2>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../../images/lo.jpg" alt="London">
+      <div class="carousel-caption">
+        <a class="sstitre" href="#"><h1>Londres</h1></a>
+        <h3 class="sstitre">Profiter d'un week-end so British'</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../../images/thai.jpg" alt="Thailande">
+      <div class="carousel-caption">
+        <a class="sstitre" href="#"><h1>La Thaïlande</h1></a>
+        <h3 class="sstitre">Comme vous ne l'avez jamais vue</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../../images/costa.jpg" alt="Costa-Rica">
+      <div class="carousel-caption">
+        <a class="sstitre" href="#"><h1>Costa Rica</h1></a>
+        <h3 class="sstitre">Découvrer la vraie beauté préservée</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+    <h1>List of circuits</h1>
 <div class="container">
     <h1 class="my-4 text-center text-lg-center">Nos destinations</h1>
     {% if circuitslist is not empty %}
+        <p id="model1">Here are all your circuits:</p>
+        <ul class="liste">
         <p class="">Envie de partir en voyage ? Découvrez nos circuits organisés et partez à l'aventure aux quatres coins du monde.</p>
         <div class="row text-center text-lg-left">
         {# Loop through list and creeate the list of circuit items. #}
@@ -17,6 +95,10 @@
             {% if circuit.programmations is not empty %}
                 {% for programmation in circuit.programmations %}
                     {% if "now"|date('Y-m-d')  < programmation.dateDepart()|date('Y-m-d') %}
+                        <li>
+                        <img src="../../images/test.jpg">
+                        <a href="{{ path('circuitshowclient', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
+                        </li>
                         <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
                             <img class="img-fluid img-thumbnail circuit" src="{{ circuit.image }}" alt="" height="800px" width="500px">
                             <div class="overlay">
