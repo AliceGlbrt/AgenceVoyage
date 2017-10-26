@@ -4,29 +4,35 @@
 
 {% extends "baselayout.html.twig" %}
 
-{% block title %}{{ parent() }} - Circuits list {% endblock %}
+{% block title %}{{ parent() }} - Nos destinations {% endblock %}
 
 {% block body %}
-    <h1>List of circuits</h1>
+<div class="container">
+    <h1 class="my-4 text-center text-lg-center">Nos destinations</h1>
     {% if circuitslist is not empty %}
-        <p id="model1">Here are all your circuits:</p>
-        <ul>
+        <p class="">Envie de partir en voyage ? Découvrez nos circuits organisés et partez à l'aventure aux quatres coins du monde.</p>
+        <div class="row text-center text-lg-left">
         {# Loop through list and creeate the list of circuit items. #}
         {% for circuit in circuitslist %}
             {% if circuit.programmations is not empty %}
                 {% for programmation in circuit.programmations %}
                     {% if "now"|date('Y-m-d')  < programmation.dateDepart()|date('Y-m-d') %}
-                        <li>
-                        <img href="../images/test.jpg">
-                        <a href="{{ path('circuitshowclient', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
-                        </li>
+                        <div class="col-lg-3 col-md-4 col-xs-6 hovereffect">
+                            <img class="img-fluid img-thumbnail circuit" src="{{ circuit.image }}" alt="" height="800px" width="500px">
+                            <div class="overlay">
+                                <h3>{{ circuit.description }}</h3>
+                                <p class="info">Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j.
+         de voyage à travers le {{ circuit.paysDepart }}, pour terminer à
+         {{ circuit.villeArrivee }}.<a href="{{ path('circuitshowclient', { 'id' : circuit.id }) }}"><b> EN SAVOIR PLUS... </b></a></p>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
         {% endfor %}
-        </ul>
     {% else %}
         <p>Sorry, you don't have any circuits yet!</p>
     {% endif %}
+</div></div>
 
 {% endblock %} {# body #}

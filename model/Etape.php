@@ -44,6 +44,12 @@ class Etape
     private $nombreJours;
 
     /**
+     * @var string chemin de l'image
+     *
+     */
+    private $image;
+
+    /**
      * Circuit de l'étape
      * 
      * @var \Model\Circuit
@@ -120,6 +126,29 @@ class Etape
         $this->nombreJours = $nombreJours;
 
         return $this;
+    }
+
+    /**
+     * Set Image
+     *
+     * @return Etape
+     */
+    public function setImage($image='')
+    {
+        $this->image = 'images/'.$image;
+
+        return $this;
+    }
+
+    /**
+     * get Image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+
+        return $this->image;
     }
 
     /**

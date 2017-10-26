@@ -27,6 +27,7 @@ class Circuit
     protected $programmations;
     private $etapes;
     private $nbEtapes;
+    private $image;
     
     /**
      * Get id
@@ -159,6 +160,30 @@ class Circuit
     }
 
     /**
+     * Set Image
+     *
+     * @return Circuit
+     */
+    public function setImage($image)
+    {
+        $this->image = 'images/'.$image;
+
+        return $this;
+    }
+
+    /**
+     * get Image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+
+        return $this->image;
+    }
+
+
+    /**
      * Constructor
      */
     public function __construct($id = null)
@@ -223,11 +248,12 @@ class Circuit
      *
      * @return Circuit
      */
-    public function addEtape($nom, $duree)
+    public function addEtape($nom, $duree, $image='')
     {
         $etape = new Etape();
         $etape->setVilleEtape($nom);
         $etape->setNombreJours($duree);
+        $etape->setImage($image);
         
     	if($this->nbEtapes == 0) {
     		$this->villeDepart = $nom;
