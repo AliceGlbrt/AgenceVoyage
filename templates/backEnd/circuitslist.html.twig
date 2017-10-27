@@ -24,21 +24,23 @@
 </nav>
      
     <div class="container">
-  <div style="margin-top:50px">
-    <h1>Liste des circuits</h1>
-    {% if circuitslist is not empty %}
-        <p>Voici la liste des circuits:</p>
-        <ul>
-        {# Loop through list and creeate the list of circuit items. #}
-        {% for circuit in circuitslist %}
-            <li>
-          		<a href="{{ path('circuitshow', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Sorry, you don't have any circuits yet!</p>
-    {% endif %}
+  <div style="margin-top:100px">
+    <h1 class="titre">Liste des circuits</h1>
+    <div class="panel panel-default well">
+      {% if circuitslist is not empty %}
+          <p>Voici la liste des circuits:</p>
+          <ul>
+          {# Loop through list and creeate the list of circuit items. #}
+          {% for circuit in circuitslist %}
+              <li>
+            		<a href="{{ path('circuitshow', { 'id' : circuit.id }) }}">{{ circuit.description }}</a>
+              </li>
+          {% endfor %}
+          </ul>
+      {% else %}
+          <p>Sorry, you don't have any circuits yet!</p>
+      {% endif %}
+    </div>
   </div>
 </div>
 
