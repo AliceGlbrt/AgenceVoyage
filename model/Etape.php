@@ -135,7 +135,7 @@ class Etape
      */
     public function setImage($image='')
     {
-        $this->image = 'images/'.$image;
+        $this->image = '../images/'.$image;
 
         return $this;
     }

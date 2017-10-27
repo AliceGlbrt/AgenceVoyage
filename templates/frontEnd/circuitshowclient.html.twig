@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Details for circuit {{ id }}</title>
+  <title>Détail du circuit {{ id }}</title>
   <link rel="stylesheet" href="../templates/CSS/detail.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,17 +29,17 @@
   </div>
   </nav>
 
-  <div class="container">
+  <div class="myContainer">
     <img class="bandeau"src="../../images/{{ circuit.description }}.jpg" alt="Andalousie">
-    <div class="center">{{ circuit.description }}</div>
+    <div class="myCenter">{{ circuit.description }}</div>
   </div>
 
 
+  <div class="container">
   <div style="margin-top:40px">
-	  <h2 class="titre">Détails du circuit</h2>
-    <div class="panel panel-default">
-      <div class="well panneau">
-    		<p>Ce voyage a pour départ {{ circuit.villeDepart }}. Embarquez pour une durée de {{ circuit.dureeCircuit }} jours
+    <h2 class="titre">Détails du circuit</h2>
+    <div class="panel panel-default well">
+        <p>Ce voyage a pour départ {{ circuit.villeDepart }}. Embarquez pour une durée de {{ circuit.dureeCircuit }} jours
            de découverte à travers le {{ circuit.paysDepart }}, pour terminer à
            {{ circuit.villeArrivee }}.</p>
         <p>Vous découvrirez lors de ce voyage :</p>
@@ -48,35 +48,54 @@
             <li>{{ etape.villeEtape }}, étape de {{ etape.nombreJours }} jour(s).</li>
           {% endfor %}
         </ol>
-      </div>
     </div>
   </div>
+</div>
 
-      
+<div class="container">
+  <div class="row text-center text-lg-left">
+            {% for etape in circuit.etapes %}
+    {% if etape.image is not empty %}
+    <div class="col-lg-4 col-md-4 col-xs-6">
+    <div class="miniature">
+        <img src="{{ etape.image }}" alt="circuit {{ etape.villeEtape }}" class="img-fluid img-thumbnail"/>
+    </div>
+    </div>
+            {% endif %}
+  {% endfor %}
+  </div>
+</div>
+
+  <div class="container">
+  <div class="row text-center text-lg-left">
   {% if circuit.programmations is not empty %}
-  <h2>Programmations de ce circuit</h2>
+  <h2 class="titre">Programmations de ce circuit</h2>
   {# <pre>{{ dump(circuit) }}</pre> #}
-     	<table>
-     	 		<thead>
-     					<tr>
-     				    	<th>Date de départ</th>
-     						  <th>Nombre de personnes</th>
-     						  <th>Prix</th>
-     					</tr>
-     				</thead>
-     		{%  for programmation in circuit.programmations %}
+      <table class="table table-striped text-center">
+          <thead>
+              <tr>
+                  <th class="text-center">Date de départ</th>
+                  <th class="text-center">Nombre de personnes</th>
+                  <th class="text-center">Prix</th>
+                  <th class="text-center"></th>
+              </tr>
+            </thead>
+        {%  for programmation in circuit.programmations %}
           {% if "now"|date('Y-m-d')  < programmation.dateDepart()|date('Y-m-d') %}
-         		<tr>
-         		   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
-         		   <td>{{ programmation.nombrePersonnes }}</td>
-      			   <td>{{ programmation.prix }} euros</td>
-       			</tr>
+            <tr>
+               <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+               <td>{{ programmation.nombrePersonnes }}</td>
+               <td>{{ programmation.prix }} euros</td>
+               <td><button type="button" class="btn btn-primary">Réserver</button></td>
+            </tr>
           {% endif %}
-     		{% endfor %}
-     		</table>
+        {% endfor %}
+        </table>
     {% else %}
     <p>Désolé : pas encore de programmations pour ce circuit.</p>
     {% endif %}
   </div>
+</div>
+</div>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Details for circuit {{ id }}</title>
+  <title>Details pour le circuit {{ id }}</title>
   <link rel="stylesheet" href="../../templates/CSS/detail.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,52 +29,53 @@
   </div>
   </nav>
 
-  <div class="container">
-    <img class="bandeau"src="../../images/{{ circuit.description }}.jpg" alt="Andalousie">
-    <div class="center">{{ circuit.description }}</div>
-  </div>
 
-  
-  <div style="margin-top:40px">
-    <h2 class="titre">Détails du circuit</h2>
-    <div class="panel panel-default">
-      <div class="well panneau">
-        <p>Ce voyage a pour départ {{ circuit.villeDepart }}. Embarquez pour une durée de {{ circuit.dureeCircuit }} jours
-           de découverte à travers le {{ circuit.paysDepart }}, pour terminer à
-           {{ circuit.villeArrivee }}.</p>
-        <p>Vous découvrirez lors de ce voyage :</p>
+
+ <div class="container">
+  <div style="margin-top:50px">
+    <h2 class="titre">{{ circuit.description}} </h2>
+    <h2 class="titre" style="font-size:35px">Détails du circuit</h2>
+    <div class="panel panel-default well">
+        <h3>Etapes</h3>
         <ol>
           {%  for etape in circuit.etapes %}
             <li>{{ etape.villeEtape }}, étape de {{ etape.nombreJours }} jour(s).</li>
           {% endfor %}
         </ol>
       </div>
-    </div>
   </div>
+</div>
 
   
+<div class="container">
+  <div class="row text-center text-lg-left">
+      <div class="panel panel-default well">
   {% if circuit.programmations is not empty %}
-  <h2>Programmations de ce circuit</h2>
+  <h2 class="titre" style="font-size:35px">Programmations de ce circuit</h2>
   {# <pre>{{ dump(circuit) }}</pre> #}
-     	<table>
-     	 		<thead>
-     					<tr>
-     				    	<th>Date de départ</th>
-     						  <th>Nombre de personnes</th>
-     						  <th>Prix</th>
-     					</tr>
-     				</thead>
-     		{%  for programmation in circuit.programmations %}
-     			<tr>
-     			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
-     			   <td>{{ programmation.nombrePersonnes }}</td>
-     			   <td>{{ programmation.prix }} euros</td>
-     			</tr>
-     		{% endfor %}
-     		</table>
+      <table class="table table-striped text-center">
+          <thead>
+              <tr>
+                  <th class="text-center">Date de départ</th>
+                  <th class="text-center">Nombre de personnes</th>
+                  <th class="text-center">Prix</th>
+              </tr>
+            </thead>
+        {%  for programmation in circuit.programmations %}
+          {% if "now"|date('Y-m-d')  < programmation.dateDepart()|date('Y-m-d') %}
+            <tr>
+               <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+               <td>{{ programmation.nombrePersonnes }}</td>
+               <td>{{ programmation.prix }} euros</td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+        </table>
     {% else %}
     <p>Désolé : pas encore de programmations pour ce circuit.</p>
     {% endif %}
-
+  </div>
+</div>
+</div>
 </body>
 </html>

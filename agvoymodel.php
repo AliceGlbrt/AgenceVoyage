@@ -28,7 +28,7 @@ $circuitVietnam->setImage('vietnam.jpg');
 $circuitVietnam->addEtape('Hanoï', 1,'hanoi.jpg');
 $circuitVietnam->addEtape('Dà Nang', 1,'danang.jpg');
 $circuitVietnam->addEtape('Hôï An', 1,'hoian.jpg');
-$circuitVietnam->addEtape('Hô Chi Minh',1,'hochiminh.jpg');
+$circuitVietnam->addEtape('Hô Chi Minh',1,'hochiming.jpg');
 $list_of_circuits[] = $circuitVietnam;
 
 $circuitIdF = new Circuit();
